@@ -42,3 +42,15 @@ Route::group(['namespace' => '', 'prefix' => 'laporan-total-daya'], function () 
     Route::get('/', [App\Http\Controllers\LaporanTotalDayaController::class, 'index'])->name('laporan-total-daya');
     Route::get('/show', [App\Http\Controllers\LaporanTotalDayaController::class, 'show'])->name('laporan-total-daya.show');
 });
+
+
+//kontrol on off
+Route::group(['namespace' => '', 'prefix' => 'kirim-status-on-off'], function () {
+    Route::get('/teras-rumah/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Teras_Rumah']);
+    Route::get('/ruang-tamu/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Ruang_Tamu']);
+    Route::get('/kamar-utama/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Kamar_Utama']);
+    Route::get('/kamar-kedua/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Kamar_Kedua']);
+    Route::get('/dapur/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Dapur']);
+    Route::get('/toilet/{status}', [App\Http\Controllers\KontrolOnOffController::class, 'Toilet']);
+});
+

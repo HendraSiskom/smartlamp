@@ -21,7 +21,9 @@
     {{-- datatable --}}
     <link href="{{ asset('vora/vendor/datatables/css/jquery.dataTables.min.css')}}" rel="stylesheet">
     <link href="{{ asset('vora/vendor/bootstrap-select/dist/css/bootstrap-select.min.css')}}" rel="stylesheet">
-    @yield('css')
+
+    <script src=//code.jquery.com/jquery-3.5.1.slim.min.js integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin=anonymous></script>
+    @include('layouts.inc.css')
 </head>
 
 <body>
@@ -110,7 +112,7 @@
         <div class="footer">
             <div class="copyright">
                 <p>Copyright © Penelitian DIPA 2022 - Rekayasa Sistem Komputer
-                    2021</p>
+                    2022</p>
             </div>
         </div>
 
@@ -131,7 +133,7 @@
     <script src="{{ asset('vora/js/dashboard/dashboard-1.js')}}"></script>
     <script src="{{ asset('vora/vendor/datatables/js/jquery.dataTables.min.js')}}"></script>
     <script src="{{ asset('vora/js/plugins-init/datatables.init.js')}}"></script>
-
+    @include('layouts.inc.js')
     @yield('js')
 </body>
 

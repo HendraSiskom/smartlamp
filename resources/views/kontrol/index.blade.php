@@ -1,188 +1,5 @@
 @extends('layouts.template')
 
-@section('css')
-<style>
-    .toggleSwitch {
-        display: inline-block;
-        height: 18px;
-        position: relative;
-        overflow: visible;
-        padding: 0;
-        cursor: pointer;
-        width: 40px;
-        user-select: none;
-    }
-
-    .toggleSwitch label,
-    .toggleSwitch>span {
-        line-height: 20px;
-        height: 20px;
-        vertical-align: middle;
-    }
-
-    .toggleSwitch label {
-        position: relative;
-        z-index: 3;
-        display: block;
-        width: 100%;
-    }
-
-    .toggleSwitch input:focus~a,
-    .toggleSwitch input:focus+label {
-        outline: none;
-    }
-
-    .toggleSwitch input {
-        position: absolute;
-        opacity: 0;
-        z-index: 5;
-    }
-
-    .toggleSwitch span span {
-        display: none;
-    }
-
-    .toggleSwitch>span {
-        position: absolute;
-        left: -50px;
-        width: 100%;
-        margin: 0;
-        padding-right: 50px;
-        text-align: left;
-        white-space: nowrap;
-    }
-
-    .toggleSwitch>span span {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: 5;
-        display: block;
-        width: 50%;
-        margin-left: 50px;
-        text-align: left;
-        font-size: 0.9em;
-        width: 100%;
-        left: 15%;
-        top: -1px;
-        opacity: 0;
-    }
-
-    .toggleSwitch a {
-        position: absolute;
-        right: 50%;
-        z-index: 4;
-        display: block;
-        height: 100%;
-        padding: 0;
-        left: 2px;
-        width: 18px;
-        background-color: #fff;
-        border: 1px solid #CCC;
-        border-radius: 100%;
-        -webkit-transition: all 0.2s ease-out;
-        -moz-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out;
-        box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
-    }
-
-    .toggleSwitch>span span:first-of-type {
-        color: #ccc;
-        opacity: 1;
-        left: 45%;
-    }
-
-    .toggleSwitch>span:before {
-        content: '';
-        display: block;
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        left: 50px;
-        top: -2px;
-        background-color: red;
-        border: 1px solid #ccc;
-        border-radius: 30px;
-        -webkit-transition: all 0.2s ease-out;
-        -moz-transition: all 0.2s ease-out;
-        transition: all 0.2s ease-out;
-    }
-
-    .toggleSwitch input:checked~a {
-        border-color: #fff;
-        left: 100%;
-        margin-left: -8px;
-    }
-
-    .toggleSwitch input:checked~span:before {
-        border-color: #0097D1;
-        box-shadow: inset 0 0 0 30px #0097D1;
-    }
-
-    .toggleSwitch input:checked~span span:first-of-type {
-        opacity: 0;
-    }
-
-    .toggleSwitch input:checked~span span:last-of-type {
-        opacity: 1;
-        color: #fff;
-    }
-
-    /* Switch Sizes */
-    .toggleSwitch.large {
-        width: 60px;
-        height: 27px;
-    }
-
-    .toggleSwitch.large a {
-        width: 27px;
-    }
-
-    .toggleSwitch.large>span {
-        height: 29px;
-        line-height: 28px;
-    }
-
-    .toggleSwitch.large input:checked~a {
-        left: 41px;
-    }
-
-    .toggleSwitch.large>span span {
-        font-size: 1.1em;
-    }
-
-    .toggleSwitch.large>span span:first-of-type {
-        left: 50%;
-    }
-
-    .toggleSwitch.xlarge {
-        width: 80px;
-        height: 36px;
-    }
-
-    .toggleSwitch.xlarge a {
-        width: 36px;
-    }
-
-    .toggleSwitch.xlarge>span {
-        height: 38px;
-        line-height: 37px;
-    }
-
-    .toggleSwitch.xlarge input:checked~a {
-        left: 52px;
-    }
-
-    .toggleSwitch.xlarge>span span {
-        font-size: 1.4em;
-    }
-
-    .toggleSwitch.xlarge>span span:first-of-type {
-        left: 50%;
-    }
-</style>
-@endsection
-
 @section('content')
 <div class="row">
     <div class="col-md-4 col-12">
@@ -191,15 +8,134 @@
                 <h4 class="card-title">Teras Rumah</h4>
             </div>
             <div class="card-body">
-
                 <div class="basic-form">
                     <form style="text-align: center">
                         <div class="form-group">
-                            <label class="toggleSwitch nolabel" onclick="">
-                                <input type="checkbox" checked />
+                            <label for="switch1" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch1" name="teras_rumah" type="checkbox" switch="none" {{ $userkontrol->teras_rumah == '1' ? 'checked' : '' }} />
                                 <span>
-                                    <span>OFF</span>
-                                    <span>ON</span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                </span>
+                                <a></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Ruang Tamu</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form style="text-align: center">
+                        <div class="form-group">
+                            <label for="switch2" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch2" name="ruang_tamu" type="checkbox" switch="none" {{ $userkontrol->ruang_tamu == '1' ? 'checked' : '' }} />
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                </span>
+                                <a></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Kamar Utama</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form style="text-align: center">
+                        <div class="form-group">
+                            <label for="switch3" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch3" name="kamar_utama" type="checkbox" switch="none" {{ $userkontrol->kamar_utama == '1' ? 'checked' : '' }} />
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                </span>
+                                <a></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Kamar Kedua</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form style="text-align: center">
+                        <div class="form-group">
+                            <label for="switch4" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch4" name="kamar_kedua" type="checkbox" switch="none" {{ $userkontrol->kamar_kedua == '1' ? 'checked' : '' }} />
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                </span>
+                                <a></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Dapur</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form style="text-align: center">
+                        <div class="form-group">
+                            <label for="switch5" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch5" name="dapur" type="checkbox" switch="none" {{ $userkontrol->dapur == '1' ? 'checked' : '' }} />
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
+                                </span>
+                                <a></a>
+                            </label>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-4 col-12">
+        <div class="card">
+            <div class="card-header">
+                <h4 class="card-title">Toilet</h4>
+            </div>
+            <div class="card-body">
+                <div class="basic-form">
+                    <form style="text-align: center">
+                        <div class="form-group">
+                            <label for="switch6" class="toggleSwitch nolabel" data-off-label="Off" data-on-label="On">
+                                <input id="switch6" name="toilet" type="checkbox" switch="none" {{ $userkontrol->toilet == '1' ? 'checked' : '' }} />
+                                <span>
+                                    <span>Off</span>
+                                    <span>On</span>
                                 </span>
                                 <a></a>
                             </label>

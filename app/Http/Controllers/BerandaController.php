@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\UserKontrol;
 use Illuminate\Http\Request;
 
 class BerandaController extends Controller
@@ -13,7 +14,8 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        return view('beranda.index');
+        $userkontrol = UserKontrol::first();
+        return view('beranda.index', compact('userkontrol'));
     }
 
     /**
