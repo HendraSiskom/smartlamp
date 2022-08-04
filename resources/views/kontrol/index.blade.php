@@ -2,6 +2,16 @@
 
 @section('content')
 <div class="row">
+<div class="col-xl-12">
+<div class="card">
+<div class="card-body">
+
+<h5 class="title-num text-black font-w600" style="text-align:center">Manajemen Lampu</h5>
+</div>
+</div>
+</div>
+
+
     <div class="col-md-4 col-12">
         <div class="card">
             <div class="card-header">

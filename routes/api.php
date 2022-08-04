@@ -17,3 +17,14 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('kirim-data/{Watt}', [App\Http\Controllers\ApiController::class, 'kirim_data']);
+
+Route::group(['namespace' => '', 'prefix' => 'get-status'], function () {
+    Route::get('/teras-rumah', [App\Http\Controllers\ApiKontrolController::class, 'TerasRumah']);
+    Route::get('/ruang-tamu', [App\Http\Controllers\ApiKontrolController::class, 'RuangTamu']);
+    Route::get('/kamar-utama', [App\Http\Controllers\ApiKontrolController::class, 'KamarUtama']);
+    Route::get('/kamar-kedua', [App\Http\Controllers\ApiKontrolController::class, 'KamarKedua']);
+    Route::get('/dapur', [App\Http\Controllers\ApiKontrolController::class, 'Dapur']);
+    Route::get('/toilet', [App\Http\Controllers\ApiKontrolController::class, 'Toilet']);
+});
