@@ -19,6 +19,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
+Route::get('/logout', [App\Http\Controllers\BerandaController::class, 'logout'])->name('logout');
+
 // Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
 Route::group(['namespace' => '', 'prefix' => 'beranda'], function () {
     Route::get('/', [App\Http\Controllers\BerandaController::class, 'index'])->name('beranda');

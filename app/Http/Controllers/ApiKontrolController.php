@@ -31,13 +31,13 @@ class ApiKontrolController extends Controller
         return $data;
     }
 
-    public function dapur()
+    public function Dapur()
     {
         $data = UserKontrol::first()->dapur;
         return $data;
     }
 
-    public function toilet()
+    public function Toilet()
     {
         $data = UserKontrol::first()->toilet;
         return $data;

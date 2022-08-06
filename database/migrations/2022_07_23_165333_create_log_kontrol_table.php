@@ -18,12 +18,12 @@ class CreateLogKontrolTable extends Migration
             $table->string('tanggal');
             $table->string('waktu');
             $table->integer('kode_hari');
-            $table->float('teras_rumah');
-            $table->float('ruang_tamu');
-            $table->float('kamar_utama');
-            $table->float('kamar_kedua');
-            $table->float('dapur');
-            $table->float('toilet');
+            $table->integer('teras_rumah');
+            $table->integer('ruang_tamu');
+            $table->integer('kamar_utama');
+            $table->integer('kamar_kedua');
+            $table->integer('dapur');
+            $table->integer('toilet');
             $table->timestamps();
         });
     }
