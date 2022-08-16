@@ -18,7 +18,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::get('kirim-data/{Watt}', [App\Http\Controllers\ApiController::class, 'kirim_data']);
+Route::get('kirim-data/{Watt1}/{Watt2}/{Watt3}', [App\Http\Controllers\ApiController::class, 'kirim_data']);
+Route::get('kirim-data2/{Watt4}/{Watt5}/{Watt6}', [App\Http\Controllers\Api2Controller::class, 'kirim_data2']);
 
 Route::group(['namespace' => '', 'prefix' => 'get-status'], function () {
     Route::get('/teras-rumah', [App\Http\Controllers\ApiKontrolController::class, 'TerasRumah']);

@@ -2,11 +2,28 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Kontrol;
 use App\Models\UserKontrol;
 use Illuminate\Http\Request;
 
 class KontrolController extends Controller
 {
+     /**
+     * Create a new controller instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
+     * Show the application dashboard.
+     *
+     * @return \Illuminate\Contracts\Support\Renderable
+     */
+    
     /**
      * Display a listing of the resource.
      *
@@ -14,8 +31,11 @@ class KontrolController extends Controller
      */
     public function index()
     {
+        $kontrol = Kontrol::first();
+        $kontrol1 = Kontrol::get();
+        $kontrolulang = Kontrol::all();
         $userkontrol = UserKontrol::first();
-        return view('kontrol.index', compact('userkontrol'));
+        return view('kontrol.index', compact('userkontrol', 'kontrol1', 'kontrol', 'kontrolulang'));
     }
 
     /**
@@ -23,9 +43,43 @@ class KontrolController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function create()
+    public function create(Request $request)
     {
-        //
+        $kontrol = Kontrol::all();
+        $count = $kontrol->count();
+        if($count == 0) {
+            $status = $request->status;
+            if ($status == 'manual') {
+                Kontrol::create([
+                    'status' => $request->status
+                ]);
+            } else {
+                Kontrol::create([
+                    'status'          => $request->status,
+                    'teras_rumah_on'  => $request->teras_rumah_on,
+                    'teras_rumah_off' => $request->teras_rumah_off,
+                    'ruang_tamu_on'   => $request->ruang_tamu_on,
+                    'ruang_tamu_off'  => $request->ruang_tamu_off,
+                    'kamar_utama_on'  => $request->kamar_utama_on,
+                    'kamar_utama_off' => $request->kamar_utama_off,
+                    'kamar_kedua_on'  => $request->kamar_kedua_on,
+                    'kamar_kedua_off' => $request->kamar_kedua_off,
+                    'dapur_on'        => $request->dapur_on,
+                    'dapur_off'       => $request->dapur_off,
+                    'toilet_on'       => $request->toilet_on,
+                    'toilet_off'      => $request->toilet_off
+                ]);
+            }
+            UserKontrol::create([
+                'teras_rumah' => '2',
+                'ruang_tamu'  => '2',
+                'kamar_utama' => '2',
+                'kamar_kedua' => '2',
+                'dapur'       => '2',
+                'toilet'      => '2',
+            ]);
+        }
+        return redirect()->back();
     }
 
     /**
@@ -79,8 +133,10 @@ class KontrolController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy()
     {
-        //
+        Kontrol::query()->truncate();
+        UserKontrol::query()->truncate();
+        return redirect()->back();    
     }
 }

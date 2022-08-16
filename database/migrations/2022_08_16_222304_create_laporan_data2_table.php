@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLaporanDataTable extends Migration
+class CreateLaporanData2Table extends Migration
 {
     /**
      * Run the migrations.
@@ -13,12 +13,12 @@ class CreateLaporanDataTable extends Migration
      */
     public function up()
     {
-        Schema::create('laporan_data', function (Blueprint $table) {
+        Schema::create('laporan_data2', function (Blueprint $table) {
             $table->id();
             $table->integer('kode_hari');
-            $table->float('teras_rumah');
-            $table->float('ruang_tamu');
-            $table->float('kamar_utama');
+            $table->float('kamar_kedua');
+            $table->float('dapur');
+            $table->float('toilet');
             $table->timestamps();
         });
     }
@@ -30,6 +30,6 @@ class CreateLaporanDataTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('laporan_data');
+        Schema::dropIfExists('laporan_data2');
     }
 }

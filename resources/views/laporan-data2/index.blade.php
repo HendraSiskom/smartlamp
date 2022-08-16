@@ -5,7 +5,7 @@
     <div class="col-12">
         <div class="card">
             <div class="card-header">
-                <h4 class="card-title">Laporan Data 1</h4>
+                <h4 class="card-title">Laporan Data 2</h4>
             </div>
             <div class="card-body">
                 <div class="table-responsive">
@@ -16,9 +16,9 @@
                                 <th>Waktu</th>
                                 <th>Tanggal</th>
                                 <th>Kode-Hari</th>
-                                <th>Teras Rumah(Watt)</th>
-                                <th>Ruang Tamu(Watt)</th>
-                                <th>Kamar Utama(Watt)</th>
+                                <th>Kamar Kedua(Watt)</th>
+                                <th>Dapur(Watt)</th>
+                                <th>Toilet(Watt)</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -39,16 +39,16 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ route('laporan-data1.show') }}'
+                url: '{{ route('laporan-data2.show') }}'
             },
             columns: [
             {data: 'DT_RowIndex', orderable: false, searchable: false},
             {data: 'created_at'},
             {data: 'created_at1'},
             {data: 'kode_hari'},
-            {data: 'teras_rumah'},
-            {data: 'ruang_tamu'},
-            {data: 'kamar_utama'}
+            {data: 'kamar_kedua'},
+            {data: 'dapur'},
+            {data: 'toilet'}
         ],
         });
     });

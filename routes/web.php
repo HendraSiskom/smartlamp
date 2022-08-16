@@ -14,7 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
 });
 
 Auth::routes();
@@ -28,6 +28,8 @@ Route::group(['namespace' => '', 'prefix' => 'beranda'], function () {
 
 Route::group(['namespace' => '', 'prefix' => 'kontrol'], function () {
     Route::get('/', [App\Http\Controllers\KontrolController::class, 'index'])->name('kontrol');
+    Route::post('/create', [App\Http\Controllers\KontrolController::class, 'create'])->name('kontrol.create');
+    Route::post('/destroy', [App\Http\Controllers\KontrolController::class, 'destroy'])->name('kontrol.destroy');
 });
 
 Route::group(['namespace' => '', 'prefix' => 'log-kontrol'], function () {
@@ -35,9 +37,14 @@ Route::group(['namespace' => '', 'prefix' => 'log-kontrol'], function () {
     Route::get('/show', [App\Http\Controllers\LogKontrolController::class, 'show'])->name('log-kontrol.show');
 });
 
-Route::group(['namespace' => '', 'prefix' => 'laporan-data'], function () {
-    Route::get('/', [App\Http\Controllers\LaporanDataController::class, 'index'])->name('laporan-data');
-    Route::get('/show', [App\Http\Controllers\LaporanDataController::class, 'show'])->name('laporan-data.show');
+Route::group(['namespace' => '', 'prefix' => 'laporan-data1'], function () {
+    Route::get('/', [App\Http\Controllers\LaporanDataController::class, 'index'])->name('laporan-data1');
+    Route::get('/show', [App\Http\Controllers\LaporanDataController::class, 'show'])->name('laporan-data1.show');
+});
+
+Route::group(['namespace' => '', 'prefix' => 'laporan-data2'], function () {
+    Route::get('/', [App\Http\Controllers\LaporanData2Controller::class, 'index'])->name('laporan-data2');
+    Route::get('/show', [App\Http\Controllers\LaporanData2Controller::class, 'show'])->name('laporan-data2.show');
 });
 
 Route::group(['namespace' => '', 'prefix' => 'laporan-total-daya'], function () {

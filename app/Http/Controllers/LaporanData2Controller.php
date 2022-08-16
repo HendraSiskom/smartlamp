@@ -2,28 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\UserKontrol;
+use App\Models\LaporanData2;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
+use Yajra\DataTables\DataTables;
 
-class BerandaController extends Controller
+class LaporanData2Controller extends Controller
 {
-     /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
-
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\Contracts\Support\Renderable
-     */
-    
     /**
      * Display a listing of the resource.
      *
@@ -31,8 +15,7 @@ class BerandaController extends Controller
      */
     public function index()
     {
-        $userkontrol = UserKontrol::first() == null ? 1 : UserKontrol::first();
-        return view('beranda.index', compact('userkontrol'));
+        return view('laporan-data2.index');
     }
 
     /**
@@ -62,9 +45,18 @@ class BerandaController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
-        //
+        $data = LaporanData2::orderBy('created_at', 'DESC')->get();
+        return DataTables::of($data)
+            ->editColumn('created_at',function($data){
+                return $data->created_at->isoFormat('dddd, D MMMM Y');
+            })
+            ->editColumn('created_at1',function($data){
+                return $data->created_at->format('H:i:s');
+            })
+            ->addIndexColumn()
+            ->make(true);
     }
 
     /**
@@ -99,10 +91,5 @@ class BerandaController extends Controller
     public function destroy($id)
     {
         //
-    }
-    public function logout()
-    {
-        Auth::logout();
-        return redirect('/login');
     }
 }
