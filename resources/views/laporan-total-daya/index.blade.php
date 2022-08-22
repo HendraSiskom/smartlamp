@@ -42,7 +42,7 @@
             processing: true,
             serverSide: true,
             ajax: {
-                url: '{{ route('laporan-data.show') }}'
+                url: '{{ route('laporan-total-daya.show') }}'
             },
             columns: [
             {data: 'DT_RowIndex', orderable: false, searchable: false},
